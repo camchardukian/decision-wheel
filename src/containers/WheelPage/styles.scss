@@ -8,16 +8,21 @@ form {
     display: block;
     margin: 0px auto 16px;
   }
-
-  .add-option-btn {
-    margin: 0px 16px 16px 0px;
-  }
-
-  .update-wheel-btn {
-    border: 1px solid rgb(0, 0, 0);
-    background-color: orange;
-  }
-  .update-wheel-btn:disabled {
-    opacity: 50%;
+  .btns-container {
+    display: flex;
+    flex-direction: column;
+    button {
+      width: 100%;
+      max-width: 400px;
+      height: 72px;
+      background-color: rgb(71, 187, 48);
+      margin: 0px auto 16px;
+    }
+    .update-wheel-btn:disabled {
+      opacity: 50%;
+    }
+    .spin-btn:disabled {
+      opacity: 50%;
+    }
   }
 }

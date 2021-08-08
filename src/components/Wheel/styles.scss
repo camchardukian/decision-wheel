@@ -1,26 +1,51 @@
-.wheel {
-  border: 2px solid black;
-  border-radius: 50%;
-  height: 400px;
-  width: 400px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  .wheel-single-option {
-    border: 1px solid black;
-    overflow: hidden;
+.wheel-container {
+  width: 404px;
+  margin: 64px auto;
+  .pointer {
+    top: 64px;
+    left: 226px;
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    transform-origin: 0% 100%;
-    .wheel-single-option-text {
+    margin: 0 auto;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 40px solid #f00;
+    z-index: 5;
+  }
+  .wheel {
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    .wheel-single-option {
+      border: 1px solid black;
+      overflow: hidden;
       position: absolute;
-      text-align: center;
-      left: -100%;
-      width: 200%;
-      height: 200%;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 50%;
+      transform-origin: 0% 100%;
+      .wheel-single-option-text {
+        position: absolute;
+        text-align: center;
+        left: -100%;
+        width: 200%;
+        height: 200%;
+      }
     }
   }
+}
+.rotating {
+  animation: rotating 1.3s linear infinite;
+}
+@keyframes rotating {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.stop-rotating {
+  animation-play-state: paused;
 }
