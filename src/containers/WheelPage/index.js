@@ -5,6 +5,7 @@ const WheelPage = () => {
   const [wheelOptions, setWheelOptions] = useState([]);
   const [numberOfInputs, setNumberOfInputs] = useState([""]);
   const [inputFields, setInputFields] = useState([{}]);
+  const isSubmitBtnDisabled = Object.values(inputFields).length < 4;
   const handleAddOption = e => {
     e.preventDefault();
     setNumberOfInputs(prevState => {
@@ -28,6 +29,10 @@ const WheelPage = () => {
     <div>
       <Wheel options={wheelOptions} />
       <form onSubmit={handleSubmit}>
+        <div className="instructions-text">
+          Please enter at least 4 options and then click 'update wheel' to see
+          the wheel customized with your possible options.
+        </div>
         {numberOfInputs.map((_, index) => {
           return (
             <input
@@ -45,7 +50,13 @@ const WheelPage = () => {
         >
           Add option
         </button>
-        <button type="submit">submit</button>
+        <button
+          className="update-wheel-btn"
+          disabled={isSubmitBtnDisabled}
+          type="submit"
+        >
+          update wheel
+        </button>
       </form>
     </div>
   );
