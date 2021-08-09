@@ -1,9 +1,10 @@
 .wheel-container {
   width: 404px;
   margin: 64px auto;
+  position: relative;
   .pointer {
-    top: 64px;
-    left: 226px;
+    top: 0px;
+    left: 184px;
     position: absolute;
     margin: 0 auto;
     border-left: 16px solid transparent;
@@ -39,11 +40,11 @@
   }
 }
 .rotating {
-  animation: rotating 1.3s linear infinite;
+  animation: rotating 1.5s linear infinite;
 }
 @keyframes rotating {
   100% {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
 .stop-rotating {
