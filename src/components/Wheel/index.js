@@ -1,6 +1,10 @@
 import React from "react";
 import "./styles.scss";
-const Wheel = ({ options = [], isWheelSpinning = false }) => {
+const Wheel = ({
+  options = [],
+  isWheelSpinning = false,
+  isWheelBehindWinnerModal = false
+}) => {
   if (options.length < 4) {
     options = [
       "Play basketball",
@@ -12,7 +16,10 @@ const Wheel = ({ options = [], isWheelSpinning = false }) => {
   return (
     <div className="wheel-container">
       <div className="pointer"></div>
-      <div className={`wheel rotating ${!isWheelSpinning && "stop-rotating"}`}>
+      <div
+        className={`wheel ${(isWheelSpinning || isWheelBehindWinnerModal) &&
+          "rotating"} ${!isWheelSpinning && "stop-rotating"}`}
+      >
         {options.map((optionName, index) => {
           const degreesToRotate = (360 / options.length) * index;
           const degreesToSkew = 90 - 360 / options.length;

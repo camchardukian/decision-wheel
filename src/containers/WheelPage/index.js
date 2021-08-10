@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Wheel from "../../components/Wheel";
+import WinnerModal from "../../components/WinnerModal";
 import "./styles.scss";
 const WheelPage = () => {
   const [wheelOptions, setWheelOptions] = useState([]);
@@ -61,16 +62,16 @@ const WheelPage = () => {
       setIsShowingWinnerModal(true);
     }, randomInterval);
   };
+  const handleClickOutsideWinnerModal = () => {
+    setIsShowingWinnerModal(false);
+  };
   return (
-    <div>
-      {isShowingWinnerModal && (
-        <h1 style={{ textAlign: "center", margin: "0 auto", width: "400px" }}>
-          The winner is: {currentWinner} -- In the next PR we will make this
-          headline a modal and reset the wheel after spinning so that the user
-          can spin and generate an accurate winner multiple times.
-        </h1>
-      )}
-      <Wheel options={wheelOptions} isWheelSpinning={isWheelSpinning} />
+    <div style={isShowingWinnerModal ? { marginTop: "400px" } : {}}>
+      <Wheel
+        options={wheelOptions}
+        isWheelSpinning={isWheelSpinning}
+        isWheelBehindWinnerModal={isShowingWinnerModal}
+      />
       <form onSubmit={handleSubmit}>
         <div className="instructions-text">
           Please enter at least 4 options and then click 'update wheel' to see
@@ -110,6 +111,11 @@ const WheelPage = () => {
           </button>
         </div>
       </form>
+      <WinnerModal
+        isOpen={isShowingWinnerModal}
+        optionName={currentWinner}
+        onClickOutsideWinnerModal={handleClickOutsideWinnerModal}
+      />
     </div>
   );
 };
