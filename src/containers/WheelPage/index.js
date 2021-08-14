@@ -3,13 +3,19 @@ import Wheel from "../../components/Wheel";
 import WinnerModal from "../../components/WinnerModal";
 import "./styles.scss";
 const WheelPage = () => {
-  const [wheelOptions, setWheelOptions] = useState([]);
+  const [wheelOptions, setWheelOptions] = useState([
+    "Read a book",
+    "Play basketball",
+    "Learn more code",
+    "Go to the movies"
+  ]);
   const [numberOfInputs, setNumberOfInputs] = useState([""]);
   const [inputFields, setInputFields] = useState([{}]);
   const [isWheelSpinning, setIsWheelSpinning] = useState(false);
   const [isShowingWinnerModal, setIsShowingWinnerModal] = useState(false);
   const [currentWinner, setCurrentWinner] = useState("");
-  const isSubmitBtnDisabled = Object.values(inputFields).length < 4;
+  const isSubmitBtnDisabled =
+    Object.values(inputFields).length < 4 || isWheelSpinning;
   const degreesWheelSpinsPerSecond = 240;
   const handleAddOption = e => {
     e.preventDefault();
